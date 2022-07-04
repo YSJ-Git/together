@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const NoticeList = ({ data }) => {
   return (
     <>
@@ -6,7 +8,11 @@ const NoticeList = ({ data }) => {
           <div>데이터가 없습니다.</div>
         ) : (
           data.data.map((dataList) => (
-            <li key={dataList.id}>{dataList.attributes.title}</li>
+            <li key={dataList.id}>
+              <Link href={`/notice/view/${dataList.id}`}>
+                <a>{dataList.attributes.title}</a>
+              </Link>
+            </li>
           ))
         )}
       </ul>
